@@ -176,7 +176,7 @@ function RPH_OnEvent(self, event, ...)
 		RPH:Init()
 		RPH_Main:UnregisterEvent("PLAYER_ENTERING_WORLD")
 		RPH_Main:RegisterEvent("UPDATE_FACTION") --rfl
-		RPH_Main:RegisterEvent("LFG_BONUS_FACTION_ID_UPDATED") --rfl
+		--RPH_Main:RegisterEvent("LFG_BONUS_FACTION_ID_UPDATED") --rfl
 		-- to keep item list up to date
 		RPH_Main:RegisterEvent("BAG_UPDATE")
 		RPH_Main:RegisterEvent("BANKFRAME_OPENED")
@@ -1501,7 +1501,7 @@ function RPH_ReputationFrame_Update() --rfl
 			end
 		-- ^ rfl 1.3
 			local gender = UnitSex("player");
-			local lfgBonusFactionID = GetLFGBonusFactionID();
+			--local lfgBonusFactionID = GetLFGBonusFactionID();
 		
 			local i;
 			for i=1, NUM_FACTIONS_DISPLAYED, 1 do
@@ -3922,18 +3922,18 @@ function RPH:OriginalRepOrder(i,factionIndex,factionRow,factionBar,factionBarPre
 	local color = FACTION_BAR_COLORS[colorIndex];
 	factionBar:SetStatusBarColor(color.r, color.g, color.b);
 	factionBar.BonusIcon:SetShown(hasBonusRepGain);
-	factionRow.LFGBonusRepButton.factionID = factionID;
+	--[[factionRow.LFGBonusRepButton.factionID = factionID;
 	factionRow.LFGBonusRepButton:SetShown(canBeLFGBonus);
 	factionRow.LFGBonusRepButton:SetChecked(lfgBonusFactionID == factionID);
-	factionRow.LFGBonusRepButton:SetEnabled(lfgBonusFactionID ~= factionID);
+	factionRow.LFGBonusRepButton:SetEnabled(lfgBonusFactionID ~= factionID);]]--
 
 	if ( showLFGPulse and not SHOWED_LFG_PULSE and not lfgBonusFactionID ) then
         factionRow.LFGBonusRepButton.Glow:Show();
         factionRow.LFGBonusRepButton.GlowAnim:Play();
-    else
+    --[[else
         factionRow.LFGBonusRepButton.Glow:Hide();
-        factionRow.LFGBonusRepButton.GlowAnim:Stop();
-    end
+        factionRow.LFGBonusRepButton.GlowAnim:Stop();]]--
+    end 
 -- ^ rfl ORO 5
 	local previewValue = 0
 	if (RPH_Data.ShowPreviewRep) then
